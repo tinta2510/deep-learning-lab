@@ -5,7 +5,7 @@ A repository of small deep learning projects for educational purposes.
 ### Overview
 This project implements an image colorization technique using an **autoencoder**. The model is trained to convert grayscale images into color images.
 
-Source file: [image_colorization/image_colorization.ipynb](image_colorization/image_colorization.ipynb)
+Source file: [image_colorization.ipynb](image_colorization.ipynb)
 
 
 ### Features
