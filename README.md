@@ -60,9 +60,11 @@ This project replicates the experimental setup from the "Deep Residual Learning 
 *Source*: [resnet/cifar_classification.ipynb](resnet/cifar_classification.ipynb), [resnet/model.py](resnet/model.py)
 
 ### Project Structure
+```graphql
 resnet/
 ├── model.py             # ResNet and PlainNet model implementations
 ├── train.ipynb          # Full training pipeline (data, training, plots)
+```
 
 ### Dataset
 - CIFAR-10: 60,000 32×32 color images in 10 classes (50k train, 10k test)
@@ -75,7 +77,7 @@ resnet/
   - Each block has 2 conv layers
   - Test the model with `blocks_per_stage` = {3, 5} giving 20 layers and 32 layers total.
 - PlainNet:
-  - Similar to ResNet architecture but removing skip connection.
+  - Similar to ResNet architecture, but without residual connections
 - Reference to Section 4.2 - CIFAR-10 and Analysis in the  "Deep Residual Learning for Image Recognition" paper (He et al., 2015) for full details.
 
 ### Training Setup
@@ -86,11 +88,11 @@ resnet/
   - LR decays by 10× at epoch 50 and 75
 - Batch Size: 128
 - Epochs: 100
-- 
+
 ### Data Augmentation 
 - Random crop with 4-pixel padding
 - Random horizontal flip
-- Normalization using CIFAR-10 mean/std
+- Normalization using CIFAR-10 per-channel mean/std
 
 ### Results
 - Training/Validation loss and accuracy of Resnet and PlainNet with 20 layers after 100 epochs:
@@ -110,4 +112,10 @@ resnet/
 | **ResNet**  | 32    | **91.39**          | 0.3668    |
 | **PlainNet**| 32    | 87.90              | 0.4122    |
 
-Observation: As depth increases, ResNet continues to improve in both accuracy and loss, while PlainNet begins to degrade — consistent with findings in the original ResNet paper.
+- **Observation**: As depth increases, ResNet continues to improve in both accuracy and loss, while PlainNet begins to degrade — consistent with findings in the original ResNet paper.
+
+- Some images misclassified by Resnet with 20 layers:
+![misclassified-20](images/resnet/misclassified-20.png)
+
+- Some images misclassified by Resnet with 32 layers:
+![misclassified-32](images/resnet/misclassified-32.png)
